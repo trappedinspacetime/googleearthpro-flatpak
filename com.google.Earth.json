@@ -8,8 +8,8 @@
          "--socket=x11",
          "--share=network",
          "--share=ipc",
-         "--device=dri",
-         "--extension=org.freedesktop.Platform.GL=directory=lib/GL"
+         "--device=dri"
+
 
     ],
     "command": "google-earth-pro",
@@ -43,17 +43,26 @@
                     
                     
                 }
+
             ]
 
         },
+    "shared-modules/glew/glew.json",
     "shared-modules/glu/glu-9.0.0.json",
-    "shared-modules/udev/udev-175.json",
-    {
-      "name": "libudev1",
-      "buildsystem": "simple",
-      "build-commands": [
-        "ln -s /app/lib/libudev.so.0 /app/lib/libudev.so.1"
-      ]
-    }
+      {  "name": "glxgears",
+         "buildsystem": "simple",
+         "build-commands": [
+             "gcc glxgears.c  -o glxgears `pkg-config --cflags --libs  glew x11 xext` -lm",
+             "install -Dm755 -t /app/bin/ glxgears"
+         ],
+        "sources" : [
+             {
+                "type": "git",
+                "url" : "https://github.com/trappedinspacetime/glxgears.git",
+                "branch" : "master"
+             }
+                ]
+       }
+
     ]
 }

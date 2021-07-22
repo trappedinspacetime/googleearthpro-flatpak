@@ -1,19 +1,16 @@
 {
     "app-id": "com.google.Earth",
     "branch": "basic",
-    "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
-    "sdk": "org.kde.Sdk",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "20.08",
+    "sdk": "org.freedesktop.Sdk",
     "finish-args": [
          "--socket=x11",
          "--share=network",
          "--share=ipc",
          "--device=dri"
-
-
     ],
     "command": "google-earth-pro",
-
     "modules": [
         {
             "name": "google-earth",
@@ -27,26 +24,20 @@
                 "install googleearth.sh /app/bin/google-earth-pro"
             ],
             "sources" : [
-
                 {
                     "type": "script",
                     "dest-filename": "googleearth.sh",
                     "commands": [
                         "exec /app/googleearth-bin"
-
                     ]
                 },
-
                 {
                     "type": "file",
-                    "path": "google-earth-pro-stable_current_amd64.deb"
-                    
-                    
+                    "url": "https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb",
+                    "sha512": "05d5507240275cf30221f28f1d3170dae392ea66ddbb350c7df1b604c378532f454531989f8427e80acf62613eda92c924a0a6a851c6f5367a8f8422c63cb07e"
                 }
-
             ]
-
-        }
-
+        },
+    "shared-modules/glu/glu-9.json"
     ]
 }
